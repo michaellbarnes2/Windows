@@ -1,0 +1,25 @@
+PS C:\Windows\System32> Install-WindowsFeature containers
+PS C:\Windows\System32> Install-PackageProvider ContainerProvider - Force
+PS C:\Windows\System32> Install-ContainerImage -Name WindowsServerCore
+PS C:\Windows\System32> Get-ContainerImage
+PS C:\Windows\System32> New-VMSwitch -Name DHCP -Netadaptername Ethernet
+PS C:\Windows\System32> New-Container -Name IISSERVER01 -ContainerImageName WindowsServerCore -Switchname DHCP
+PS C:\Windows\System32>Start-Container IISSERVER01
+PS C:\Windows\System32>Enter-PSSession -ContainerName IISSERVER01 -RunAsAdministrator
+[IISSERVER01]: PS C:\Windows\system32> Install-WindowsFeature web-server
+[IISSERVER01]: PS C:\Windows\system32>exit
+
+need to disable windows firewall in order to reach server
+PS C:\Windows\System32> netsh advfirewall set allprofiles state off
+
+
+oracle virtual box network setting  bridged adapter promiscous mode :all
+
+Docker install on windows?
+PS C:\Users\Administrators> Invoke-WebRequest https://aka.ms/tp5/Update-Container-Host -OutFile update-containerhost.ps1
+
+
+PS C:\Users\Administrators> .\update-containerhost.ps1
+
+
+
